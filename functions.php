@@ -17,7 +17,7 @@ add_action( 'init', function() {
   foreach ( $element_files as $file ) {
     \Bricks\Elements::register_element( $file );
   }
-} );
+}, 11 );
 
 /**
  * Add text strings to builder
@@ -61,28 +61,6 @@ add_filter( 'bricks/builder/save_messages', function( $messages ) {
 // 	];
 
 //   return $standard_fonts;
-// } );
-
-/**
- * Custom color palette
- */
-// add_filter( 'bricks/builder/color_palette', function( $colors ) {
-// 	// Option #1: Add individual color
-// 	$colors[] = [
-// 		'hex' => '#3ce77b',
-// 		'rgb' => 'rgba(60, 231, 123, 0.56)',
-// 	];
-
-// 	// Option #2: Override entire color palette
-// 	$colors = [
-// 		['hex' =>	'#3ce77b'],
-// 		['hex' =>	'#f1faee'],
-// 		['hex' =>	'#a8dadc'],
-// 		['hex' =>	'#457b9d'],
-// 		['hex' =>	'#1d3557'],
-// 	];
-
-//   return $colors;
 // } );
 
 /** 

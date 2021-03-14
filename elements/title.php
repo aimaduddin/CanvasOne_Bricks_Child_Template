@@ -31,12 +31,12 @@ class Element_Custom_Title extends \Bricks\Element {
 
   // Set builder controls
   public function set_controls() {
-
     // Title and subtitle controls are not grouped
     $this->controls['title'] = [
       'tab' => 'content',
       'label' => esc_html__( 'Title', 'bricks' ),
       'type' => 'text',
+			'hasDynamicData' => 'text',
       'default' => esc_html__( 'I am a custom element', 'bricks' ),
       'placeholder' => esc_html__( 'Title goes here ..', 'bricks' ),
     ];
@@ -45,6 +45,7 @@ class Element_Custom_Title extends \Bricks\Element {
       'tab' => 'content',
       'label' => esc_html__( 'Subtitle', 'bricks' ),
       'type' => 'text',
+			'hasDynamicData' => 'text',
       'default' => esc_html__( 'Just a subtitle. Click to edit me!', 'bricks' ),
       'placeholder' => esc_html__( 'Subtitle goes here ..', 'bricks' ),
     ];
@@ -87,7 +88,6 @@ class Element_Custom_Title extends \Bricks\Element {
         'font-size' => '18px',
       ],
     ];
-
   }
 
   /** 
@@ -96,7 +96,6 @@ class Element_Custom_Title extends \Bricks\Element {
    * If no 'render_builder' function is defined then this code is used to render element HTML in builder, too.
    */
   public function render() {
-
     $settings = $this->settings;
     $title = isset( $settings['title'] ) && ! empty( $settings['title'] ) ? $settings['title'] : false;
     $subtitle = isset( $settings['subtitle'] ) && ! empty( $settings['subtitle'] ) ? $settings['subtitle'] : false;
@@ -113,20 +112,17 @@ class Element_Custom_Title extends \Bricks\Element {
 
     if ( $title ) {
       $this->set_attribute( 'title-wrapper', 'class', ['title'] );
-      $this->set_contenteditable( 'title-wrapper', 'title' );
     
       echo '<h4 ' . $this->render_attributes( 'title-wrapper' ) . '>' . $title . '</h4>';
     }
 
     if ( $subtitle ) {
       $this->set_attribute( 'subtitle-wrapper', 'class', ['subtitle'] );
-      $this->set_contenteditable( 'subtitle-wrapper', 'subtitle' );
     
       echo '<div ' . $this->render_attributes( 'subtitle-wrapper' ) . '>' . $subtitle . '</div>';
     }
 
     echo '</div>';
-
   }
 
   /**
@@ -139,8 +135,20 @@ class Element_Custom_Title extends \Bricks\Element {
   public static function render_builder() { ?>
 		<script type="text/x-template" id="tmpl-bricks-element-custom-title">
 			<div class="custom-title-wrapper">
-        <h4 v-if="settings.title" class="title" v-bind="setContentEditable('title-wrapper', 'title')" v-html="settings.title"></h4>
-        <div v-if="settings.subtitle" class="subtitle" v-bind="setContentEditable('subtitle-wrapper', 'subtitle')" v-html="settings.subtitle"></div>
+			<contenteditable
+				v-if="settings.title" 
+				tag="h4"
+				:name="name"
+				:settings="settings"
+				controlKey="title"
+				class="title" />
+
+        <contenteditable
+					v-if="settings.subtitle" 
+					:name="name"
+					:settings="settings"
+					controlKey="subtitle"
+					class="subtitle"/>
 			</div>
 		</script>
 	<?php
