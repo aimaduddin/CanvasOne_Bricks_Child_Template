@@ -5,6 +5,26 @@
  Author:       Bricks
  Author URI:   https://bricksbuilder.io/
  Template:     bricks
- Version:      1.0
+ Version:      1.1
  Text Domain:  bricks
 */
+
+#brxe-yfmthq {
+  animation-iteration-count: infinite;
+}
+
+.show #navigation-menu {
+  transition: ease-in 0.2s;
+  transform: translateX(-350px);
+}
+
+
+.show #sidebar-menu {
+  right: 0 !important;
+  transition: ease-in 0.2s;
+  /* transform: translateX(-350px); */
+}
+
+.picture-hover:hover~#icon-list-3 {
+  display: flex !important;
+}

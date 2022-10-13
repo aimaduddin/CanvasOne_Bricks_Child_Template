@@ -1,0 +1,265 @@
+@use 'sass:map';
+@use 'variants' as * with ($breakpoints: ('small': 640px,
+        'medium': 768px,
+        'large': 1024px,
+        'wide': 1280px,
+    ));
+
+// ████████╗███████╗██╗  ██╗████████╗
+// ╚══██╔══╝██╔════╝╚██╗██╔╝╚══██╔══╝
+//    ██║   █████╗   ╚███╔╝    ██║
+//    ██║   ██╔══╝   ██╔██╗    ██║
+//    ██║   ███████╗██╔╝ ██╗   ██║
+//    ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝
+
+$text: (
+    'left': left,
+    'right': right,
+    'center': center,
+    'justify': justify,
+);
+
+.text {
+    @include options($text, 'responsive') using ($value) {
+        text-align: $value;
+    }
+}
+
+
+// ███████╗██████╗  █████╗  ██████╗██╗███╗   ██╗ ██████╗ 
+// ██╔════╝██╔══██╗██╔══██╗██╔════╝██║████╗  ██║██╔════╝ 
+// ███████╗██████╔╝███████║██║     ██║██╔██╗ ██║██║  ███╗
+// ╚════██║██╔═══╝ ██╔══██║██║     ██║██║╚██╗██║██║   ██║
+// ███████║██║     ██║  ██║╚██████╗██║██║ ╚████║╚██████╔╝
+// ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ 
+
+$spacing: (
+    '0': 0,
+    '1': .1rem,
+    '2': .2rem,
+    '3': .3rem,
+    '4': .4rem,
+    '5': .5rem,
+    '6': .6rem,
+    '8': .8rem,
+    '10': 1rem,
+    '12': 1.2rem,
+    '16': 1.6rem,
+    '20': 2rem,
+    '24': 2.4rem,
+    '30': 3rem,
+    '32': 3.2rem,
+    '40': 4rem,
+    '48': 4.8rem,
+    '56': 5.6rem,
+    '64': 6.4rem,
+);
+
+// Add auto to the positive margin classes
+$margin: map.merge(('auto': auto), $spacing);
+
+@include variants('responsive') using ($props...) {
+
+    // ██████╗  █████╗ ██████╗ ██████╗ ██╗███╗   ██╗ ██████╗
+    // ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║██╔════╝
+    // ██████╔╝███████║██║  ██║██║  ██║██║██╔██╗ ██║██║  ███╗
+    // ██╔═══╝ ██╔══██║██║  ██║██║  ██║██║██║╚██╗██║██║   ██║
+    // ██║     ██║  ██║██████╔╝██████╔╝██║██║ ╚████║╚██████╔╝
+    // ╚═╝     ╚═╝  ╚═╝╚═════╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝
+
+    .p {
+        @include options($spacing, $props...) using ($value) {
+            padding: $value;
+        }
+    }
+
+    .px {
+        @include options($spacing, $props...) using ($value) {
+            padding-right: $value;
+            padding-left: $value;
+        }
+    }
+
+    .py {
+        @include options($spacing, $props...) using ($value) {
+            padding-bottom: $value;
+            padding-top: $value;
+        }
+    }
+
+    .pt {
+        @include options($spacing, $props...) using ($value) {
+            padding-top: $value;
+        }
+    }
+
+    .pr {
+        @include options($spacing, $props...) using ($value) {
+            padding-right: $value;
+        }
+    }
+
+    .pb {
+        @include options($spacing, $props...) using ($value) {
+            padding-bottom: $value;
+        }
+    }
+
+    .pl {
+        @include options($spacing, $props...) using ($value) {
+            padding-left: $value;
+        }
+    }
+
+
+    // ███╗   ███╗ █████╗ ██████╗  ██████╗ ██╗███╗   ██╗
+    // ████╗ ████║██╔══██╗██╔══██╗██╔════╝ ██║████╗  ██║
+    // ██╔████╔██║███████║██████╔╝██║  ███╗██║██╔██╗ ██║
+    // ██║╚██╔╝██║██╔══██║██╔══██╗██║   ██║██║██║╚██╗██║
+    // ██║ ╚═╝ ██║██║  ██║██║  ██║╚██████╔╝██║██║ ╚████║
+    // ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝
+
+    .m {
+        @include options($margin, $props...) using ($value) {
+            margin: $value;
+        }
+    }
+
+    .mx {
+        @include options($margin, $props...) using ($value) {
+            margin-right: $value;
+            margin-left: $value;
+        }
+    }
+
+    .my {
+        @include options($margin, $props...) using ($value) {
+            margin-bottom: $value;
+            margin-top: $value;
+        }
+    }
+
+    .mt {
+        @include options($margin, $props...) using ($value) {
+            margin-top: $value;
+        }
+    }
+
+    .mr {
+        @include options($margin, $props...) using ($value) {
+            margin-right: $value;
+        }
+    }
+
+    .mb {
+        @include options($margin, $props...) using ($value) {
+            margin-bottom: $value;
+        }
+    }
+
+    .-ml {
+        @include options($margin, $props...) using ($value) {
+            margin-left: $value;
+        }
+    }
+
+
+    //       ███╗   ███╗ █████╗ ██████╗  ██████╗ ██╗███╗   ██╗
+    //       ████╗ ████║██╔══██╗██╔══██╗██╔════╝ ██║████╗  ██║
+    // █████╗██╔████╔██║███████║██████╔╝██║  ███╗██║██╔██╗ ██║
+    // ╚════╝██║╚██╔╝██║██╔══██║██╔══██╗██║   ██║██║██║╚██╗██║
+    //       ██║ ╚═╝ ██║██║  ██║██║  ██║╚██████╔╝██║██║ ╚████║
+    //       ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝
+
+    .-m {
+        @include options($spacing, $props...) using ($value) {
+            margin: -$value;
+        }
+    }
+
+    .-mx {
+        @include options($spacing, $props...) using ($value) {
+            margin-right: -$value;
+            margin-left: -$value;
+        }
+    }
+
+    .-my {
+        @include options($spacing, $props...) using ($value) {
+            margin-bottom: -$value;
+            margin-top: -$value;
+        }
+    }
+
+    .-mt {
+        @include options($spacing, $props...) using ($value) {
+            margin-top: -$value;
+        }
+    }
+
+    .-mr {
+        @include options($spacing, $props...) using ($value) {
+            margin-right: -$value;
+        }
+    }
+
+    .-mb {
+        @include options($spacing, $props...) using ($value) {
+            margin-bottom: -$value;
+        }
+    }
+
+    .-ml {
+        @include options($spacing, $props...) using ($value) {
+            margin-left: -$value;
+        }
+    }
+}
+
+header {
+    ul {
+        gap: 4.6rem;
+
+        li {
+            margin-left: 0 !important;
+        }
+    }
+}
+
+.grid-wrapper {
+    display: grid;
+    width: 100%;
+
+    img {
+        width: auto;
+        height: auto;
+    }
+
+    &-works {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        .grid-image:nth-child(1) {
+            grid-row: span 2;
+        }
+
+        .grid-image:nth-child(4) {
+            grid-column: span 2;
+        }
+    }
+
+    &-services {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        .grid-image:nth-child(1) {
+            grid-row: span 2;
+        }
+
+    }
+
+    &-blog {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+
+    }
+
+}
